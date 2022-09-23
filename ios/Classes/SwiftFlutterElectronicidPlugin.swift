@@ -1,10 +1,10 @@
 import Flutter
 import UIKit
-import VideoID
+import VideoIDSDK
 
 public class SwiftFlutterElectronicidPlugin: NSObject, FlutterPlugin {
-    
-public static var registrar: FlutterPluginRegistrar?
+
+  public static var registrar: FlutterPluginRegistrar?
 public var result: FlutterResult?
 public static var instance: SwiftFlutterElectronicidPlugin?
 public typealias EIDDict = Dictionary<String, Any>
@@ -27,11 +27,15 @@ public typealias EIDDict = Dictionary<String, Any>
                 self.result = nil
             }
     if call.method == "openVideoID" {
-        let configuration = arguments["configuration"]
-        let environment = VideoID.Environment(url: "", autorization: "")
-        var videoViewController: VideoIDViewController?
+        let config = arguments["configuration"] as Dictionary<String, Any>
+        let authorization = config["authorization"] as String
+        let endpoint = config["endpoint"] as String
+        let language = config["language"] as String
+        let document = config["document"] as Int?
+        let environment = VideoIDSDK.Environment(url: endpoint, authorization: authorization)
+        var videoViewController: VideoIDSDKViewController?
 
-        videoViewController = VideoIDViewController(environment: environment, language: "de", docType: 52)
+        videoViewController = VideoIDSDKViewController(environment: environment, language: language, docType: document)
         videoViewController?.modalPresentationStyle = .fullScreen
         
         if let controller = videoViewController {
