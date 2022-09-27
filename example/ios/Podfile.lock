@@ -1,0 +1,33 @@
+PODS:
+  - eIDWebRTC (1.1.32)
+  - Flutter (1.0.0)
+  - flutter_electronicid (0.0.1):
+    - Flutter
+    - VideoID (~> 7.1.22)
+  - VideoID (7.1.22):
+    - eIDWebRTC (= 1.1.32)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_electronicid (from `.symlinks/plugins/flutter_electronicid/ios`)
+
+SPEC REPOS:
+  trunk:
+    - eIDWebRTC
+    - VideoID
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_electronicid:
+    :path: ".symlinks/plugins/flutter_electronicid/ios"
+
+SPEC CHECKSUMS:
+  eIDWebRTC: 0088b60c3d9e0ee0f912464958dcea5e5f8db105
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  flutter_electronicid: 2ad67f600815cdadbb8e402ed0c13f709c667c2e
+  VideoID: 893133cbd086bb9b9441b069ab55caa3d3c26640
+
+PODFILE CHECKSUM: 7368163408c647b7eb699d0d788ba6718e18fb8d
+
+COCOAPODS: 1.11.2
