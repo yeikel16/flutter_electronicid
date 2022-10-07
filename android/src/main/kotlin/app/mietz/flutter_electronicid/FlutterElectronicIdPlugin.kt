@@ -6,11 +6,11 @@ import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.NonNull
-import eu.electronicid.sdk.ExtraModulesProvider.Companion.loadEidKoinModules
 import eu.electronicid.sdk.base.model.Environment
 import eu.electronicid.sdk.base.ui.base.VideoIdServiceActivity
 import eu.electronicid.sdk.discriminator.CheckRequirements
-import eu.electronicid.sdk.ui.videoid.VideoIDActivity
+import eu.electronicid.sdklite.ExtraModulesProvider.Companion.loadEidKoinModules
+import eu.electronicid.sdklite.ui.videoid.VideoIDActivity
 import io.flutter.Log
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.plugins.FlutterPlugin
