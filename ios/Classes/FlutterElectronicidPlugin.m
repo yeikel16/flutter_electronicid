@@ -1,4 +1,4 @@
-#import "FlutterElectronicidPlugin.h"
+#import "FlutterElectronicIdPlugin.h"
 #if __has_include(<flutter_electronicid/flutter_electronicid-Swift.h>)
 #import <flutter_electronicid/flutter_electronicid-Swift.h>
 #else
@@ -8,8 +8,8 @@
 #import "flutter_electronicid-Swift.h"
 #endif
 
-@implementation FlutterElectronicidPlugin
+@implementation FlutterElectronicIdPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  [SwiftFlutterElectronicidPlugin registerWithRegistrar:registrar];
+  [SwiftFlutterElectronicIdPlugin registerWithRegistrar:registrar];
 }
 @end

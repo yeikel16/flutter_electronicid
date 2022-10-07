@@ -2,20 +2,20 @@ import Flutter
 import UIKit
 import VideoIDSDK
 
-public class SwiftFlutterElectronicidPlugin: NSObject, FlutterPlugin {
+public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin {
 
   public static var registrar: FlutterPluginRegistrar?
 public var result: FlutterResult?
-public static var instance: SwiftFlutterElectronicidPlugin?
+public static var instance: SwiftFlutterElectronicIdPlugin?
 public typealias EIDDict = Dictionary<String, Any>
 
     
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "flutter_electronicid", binaryMessenger: registrar.messenger())
-    let instance = SwiftFlutterElectronicidPlugin()
+    let instance = SwiftFlutterElectronicIdPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
-    SwiftFlutterElectronicidPlugin.registrar = registrar
-    SwiftFlutterElectronicidPlugin.instance = instance
+    SwiftFlutterElectronicIdPlugin.registrar = registrar
+    SwiftFlutterElectronicIdPlugin.instance = instance
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

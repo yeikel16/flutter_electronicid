@@ -4,12 +4,12 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 
-class FlutterElectronicid {
+class FlutterElectronicId {
   static const MethodChannel _channel =
       const MethodChannel('flutter_electronicid');
 
   static Future<String?> openVideoID(
-      {VideIDConfiguration? configuration,
+      {VideoIDConfiguration? configuration,
       Map<String, dynamic>? serialization}) async {
     final result = await _channel.invokeMethod('openVideoID', {
       'configuration': configuration?.toJson(),
@@ -30,8 +30,8 @@ class FlutterElectronicid {
   }
 }
 
-class VideIDConfiguration {
-  VideIDConfiguration({
+class VideoIDConfiguration {
+  VideoIDConfiguration({
     required this.endpoint,
     required this.authorization,
     required this.language,

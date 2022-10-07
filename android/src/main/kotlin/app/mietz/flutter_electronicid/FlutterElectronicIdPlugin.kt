@@ -11,7 +11,6 @@ import eu.electronicid.sdk.base.model.Environment
 import eu.electronicid.sdk.base.ui.base.VideoIdServiceActivity
 import eu.electronicid.sdk.discriminator.CheckRequirements
 import eu.electronicid.sdk.ui.videoid.VideoIDActivity
-import eu.electronicid.sdk.ui.videoscan.VideoScanActivity
 import io.flutter.Log
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -24,10 +23,10 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import java.net.URL
 
-const val Tag = "FlutterElectronicidPlugin"
+const val Tag = "FlutterElectronicIdPlugin"
 
-/** FlutterElectronicidPlugin */
-class FlutterElectronicidPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
+/** FlutterElectronicIdPlugin */
+class FlutterElectronicIdPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -121,7 +120,7 @@ class FlutterElectronicidPlugin: FlutterPlugin, MethodCallHandler, ActivityAware
                 authorization
               )
             )
-            putExtra(VideoScanActivity.LANGUAGE, language)
+            putExtra(VideoIDActivity.LANGUAGE, language)
             if (document != null) putExtra(VideoIDActivity.ID_DOCUMENT, document)
           })
         }

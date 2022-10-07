@@ -28,9 +28,9 @@ flutter:
     platforms:
       android:
         package: app.mietz.flutter_electronicid
-        pluginClass: FlutterElectronicidPlugin
+        pluginClass: FlutterElectronicIdPlugin
       ios:
-        pluginClass: FlutterElectronicidPlugin
+        pluginClass: FlutterElectronicIdPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

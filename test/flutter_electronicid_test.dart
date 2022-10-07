@@ -19,6 +19,6 @@ void main() {
   });
 
   test('checkRequirements', () async {
-    expect(await FlutterElectronicid.checkRequirements(endpoint), true);
+    expect(await FlutterElectronicId.checkRequirements(endpoint), true);
   });
 }

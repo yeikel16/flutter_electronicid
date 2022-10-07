@@ -1,4 +1,4 @@
 #import <Flutter/Flutter.h>
 
-@interface FlutterElectronicidPlugin : NSObject<FlutterPlugin>
+@interface FlutterElectronicIdPlugin : NSObject<FlutterPlugin>
 @end

@@ -19,8 +19,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   void openVideoId() async {
-    final videoId = await FlutterElectronicid.openVideoID(
-      configuration: VideIDConfiguration(
+    final videoId = await FlutterElectronicId.openVideoID(
+      configuration: VideoIDConfiguration(
         authorization: '<your electronic ID authorization token>',
         language: 'en',
         endpoint: endpoint,
@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   void checkRequirements() async {
-    final success = await FlutterElectronicid.checkRequirements(endpoint);
+    final success = await FlutterElectronicId.checkRequirements(endpoint);
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text('Video ID Requirements Passed: $success'),
     ));
