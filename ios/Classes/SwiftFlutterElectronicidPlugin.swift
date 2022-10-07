@@ -1,13 +1,13 @@
 import Flutter
 import UIKit
-import VideoIDSDK
+import VideoIDLiteSDK
 
 public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin {
 
   public static var registrar: FlutterPluginRegistrar?
-public var result: FlutterResult?
-public static var instance: SwiftFlutterElectronicIdPlugin?
-public typealias EIDDict = Dictionary<String, Any>
+  public var result: FlutterResult?
+  public static var instance: SwiftFlutterElectronicIdPlugin?
+  public typealias EIDDict = Dictionary<String, Any>
 
     
   public static func register(with registrar: FlutterPluginRegistrar) {
@@ -33,10 +33,19 @@ public typealias EIDDict = Dictionary<String, Any>
         let language = config["language"] as String
         let document = config["document"] as Int?
         let environment = VideoIDSDK.Environment(url: endpoint, authorization: authorization)
-        var videoViewController: VideoIDSDKViewController?
 
-        videoViewController = VideoIDSDKViewController(environment: environment, language: language, docType: document)
-        videoViewController?.modalPresentationStyle = .fullScreen
+        let viewController = UIApplication.shared.keyWindow?.rootViewController?
+
+        DispatchQueue.main.async {
+          let view = VideoIDSDK.VideoIDSDKViewController(environment: environment,
+            docType: document,
+            language: language)
+          view.modalPresentationStyle = .fullScreen
+          view.delegate = SwiftFlutterElectronicIdPlugin
+          viewController.present(controller, animated: true, completion: nil)
+        }
+
+        var videoViewController: VideoIDSDKViewController?
         
         if let controller = videoViewController {
             UIApplication.shared.keyWindow?.rootViewController?.present(controller, animated: true, completion: nil)
@@ -45,5 +54,14 @@ public typealias EIDDict = Dictionary<String, Any>
         }
     }
       
+  }
+}
+
+extension SwiftFlutterElectronicIdPlugin: VideoIDDelegate {
+  func onComplete(videoID: String) {
+    self.result?(videoID)
+  }
+  func onError(code: String, message: String?) {
+    self.result?(FlutterError(code: code ?? "VideoIDError", message: message, details: nil))
   }
 }
