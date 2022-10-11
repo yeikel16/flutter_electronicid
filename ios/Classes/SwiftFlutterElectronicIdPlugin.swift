@@ -23,9 +23,9 @@ public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin {
 
     
     if self.result != nil {
-                self.result?(FlutterError(code: "multiple_requests", message: "Cancelled due to multiple requests.", details: nil))
-                self.result = nil
-            }
+        self.result?(FlutterError(code: "multiple_requests", message: "Cancelled due to multiple requests.", details: nil))
+        self.result = nil
+    }
     if call.method == "openVideoID" {
         let config = arguments["configuration"] as! Dictionary<String, Any>
         let authorization = config["authorization"] as! String
@@ -44,24 +44,18 @@ public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin {
             view.delegate = self
             viewController?.present(view, animated: true, completion: nil)
         }
-
-        var videoViewController: VideoIDSDKViewController?
-        
-        if let controller = videoViewController {
-            UIApplication.shared.keyWindow?.rootViewController?.present(controller, animated: true, completion: nil)
-        } else {
-            self.result?(FlutterError(code: "Editor could not be initialized.", message: nil, details: nil))
-        }
     }
-      
   }
 }
 
 extension SwiftFlutterElectronicIdPlugin: VideoIDDelegate {
   public func onComplete(videoID: String) {
+    print("mietz_videoId complete: " + videoID)
     self.result?(videoID)
   }
   public func onError(code: String, message: String?) {
+    print("mietz_videoId error: ")
+    print(message ?? "")
     self.result?(FlutterError(code: code, message: message, details: nil))
   }
 }
