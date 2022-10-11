@@ -27,22 +27,22 @@ public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin {
                 self.result = nil
             }
     if call.method == "openVideoID" {
-        let config = arguments["configuration"] as Dictionary<String, Any>
-        let authorization = config["authorization"] as String
-        let endpoint = config["endpoint"] as String
-        let language = config["language"] as String
-        let document = config["document"] as Int?
-        let environment = VideoIDSDK.Environment(url: endpoint, authorization: authorization)
+        let config = arguments["configuration"] as! Dictionary<String, Any>
+        let authorization = config["authorization"] as! String
+        let endpoint = config["endpoint"] as! String
+        let language = config["language"] as! String
+        let document = config["document"] as! Int?
+        let environment = VideoIDSDK.SDKEnvironment(url: endpoint, authorization: authorization)
 
-        let viewController = UIApplication.shared.keyWindow?.rootViewController?
+        let viewController = UIApplication.shared.keyWindow?.rootViewController
 
         DispatchQueue.main.async {
           let view = VideoIDSDK.VideoIDSDKViewController(environment: environment,
             docType: document,
             language: language)
-          view.modalPresentationStyle = .fullScreen
-          view.delegate = SwiftFlutterElectronicIdPlugin
-          viewController.present(controller, animated: true, completion: nil)
+          view.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            view.delegate = self
+            viewController?.present(view, animated: true, completion: nil)
         }
 
         var videoViewController: VideoIDSDKViewController?
@@ -58,10 +58,10 @@ public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin {
 }
 
 extension SwiftFlutterElectronicIdPlugin: VideoIDDelegate {
-  func onComplete(videoID: String) {
+  public func onComplete(videoID: String) {
     self.result?(videoID)
   }
-  func onError(code: String, message: String?) {
-    self.result?(FlutterError(code: code ?? "VideoIDError", message: message, details: nil))
+  public func onError(code: String, message: String?) {
+    self.result?(FlutterError(code: code, message: message, details: nil))
   }
 }
