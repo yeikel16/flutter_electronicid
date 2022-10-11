@@ -2,7 +2,7 @@ import Flutter
 import UIKit
 import VideoIDSDK
 
-public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin {
+public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin, VideoIDDelegate {
 
   public static var registrar: FlutterPluginRegistrar?
   public var result: FlutterResult?
@@ -25,6 +25,8 @@ public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin {
     if self.result != nil {
         self.result?(FlutterError(code: "multiple_requests", message: "Cancelled due to multiple requests.", details: nil))
         self.result = nil
+    } else {
+        self.result = result
     }
     if call.method == "openVideoID" {
         let config = arguments["configuration"] as! Dictionary<String, Any>
@@ -46,12 +48,13 @@ public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin {
         }
     }
   }
-}
 
-extension SwiftFlutterElectronicIdPlugin: VideoIDDelegate {
   public func onComplete(videoID: String) {
     print("mietz_videoId complete: " + videoID)
     self.result?(videoID)
+    if self.result == nil {
+      print("mietz_videoId self.result is null")
+    }
   }
   public func onError(code: String, message: String?) {
     print("mietz_videoId error: ")
