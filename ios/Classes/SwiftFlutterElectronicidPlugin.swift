@@ -1,6 +1,6 @@
 import Flutter
 import UIKit
-import VideoIDLiteSDK
+import VideoIDSDK
 
 public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin {
 
