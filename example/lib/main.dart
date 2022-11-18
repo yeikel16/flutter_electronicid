@@ -49,9 +49,9 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: Column(
             children: [
-              GestureDetector(
+              ElevatedButton(
                 child: Text('Check VideoID Requirements'),
-                onTap: checkRequirements,
+                onPressed: checkRequirements,
               ),
               ElevatedButton(
                 child: Text('Open VideoID'),
