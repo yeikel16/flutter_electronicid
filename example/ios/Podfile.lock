@@ -1,7 +1,7 @@
 PODS:
   - eIDWebRTC (1.1.32)
   - Flutter (1.0.0)
-  - flutter_electronicid (0.0.1):
+  - flutter_electronicid (1.0.0):
     - Flutter
     - VideoID (~> 7.1.22)
   - VideoID (7.1.22):
