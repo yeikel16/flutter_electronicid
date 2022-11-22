@@ -5,7 +5,7 @@
 Pod::Spec.new do |s|
   s.name             = 'flutter_electronicid'
   s.version          = '0.0.1'
-  s.summary          = 'A Flutter Plugin that integrates the Native SDKs of Electronic ID, an Identity Verification Provider.'
+  s.summary          = 'A Flutter Plugin that integrates the Native Android and iOS SDKs of Electronic ID, an Identity Verification Provider.'
   s.description      = <<-DESC
 A new flutter plugin project.
                        DESC

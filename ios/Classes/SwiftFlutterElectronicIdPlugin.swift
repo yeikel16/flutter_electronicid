@@ -50,14 +50,14 @@ public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin, VideoIDDel
   }
 
   public func onComplete(videoID: String) {
-    print("mietz_videoId complete: " + videoID)
+    print("flutter_electronicid::videoId complete: " + videoID)
     self.result?(videoID)
     if self.result == nil {
-      print("mietz_videoId self.result is null")
+      print("flutter_electronicid::videoId self.result is null")
     }
   }
   public func onError(code: String, message: String?) {
-    print("mietz_videoId error: ")
+    print("flutter_electronicid::videoId error: ")
     print(message ?? "")
     self.result?(FlutterError(code: code, message: message, details: nil))
   }
