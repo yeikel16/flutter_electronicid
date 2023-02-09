@@ -1,6 +1,6 @@
 name: flutter_electronicid
 description: A Flutter Plugin that integrates the Native Android and iOS SDKs of Electronic ID, an Identity Verification Provider.
-version: 1.1.0
+version: 1.2.0
 homepage: https://github.com/Mietz-GmbH/flutter_electronicid
 
 environment:

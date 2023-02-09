@@ -1,3 +1,8 @@
+## 1.2.0
+
+- Migrate from VideoIDSDK to VideoIDLiteSDK so the plugin can run in Xcode 14 which dropped bitcode support.
+- Support VideoID `checkRequirements` on iOS
+
 ## 1.1.0
 
 ### Update VideoIDSDK to 1.0.17
