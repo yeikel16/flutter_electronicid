@@ -1,11 +1,13 @@
 PODS:
-  - eIDWebRTC (1.1.32)
   - Flutter (1.0.0)
-  - flutter_electronicid (1.0.0):
+  - flutter_electronicid (1.1.0):
     - Flutter
-    - VideoID (~> 7.1.22)
-  - VideoID (7.1.22):
-    - eIDWebRTC (= 1.1.32)
+    - VideoIDLiteSDK (= 1.0.17)
+  - lottie-ios (3.2.3)
+  - OpenSSL-Universal (1.1.180)
+  - VideoIDLiteSDK (1.0.17):
+    - lottie-ios (= 3.2.3)
+    - OpenSSL-Universal (= 1.1.180)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
@@ -13,8 +15,9 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - eIDWebRTC
-    - VideoID
+    - lottie-ios
+    - OpenSSL-Universal
+    - VideoIDLiteSDK
 
 EXTERNAL SOURCES:
   Flutter:
@@ -23,11 +26,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_electronicid/ios"
 
 SPEC CHECKSUMS:
-  eIDWebRTC: 0088b60c3d9e0ee0f912464958dcea5e5f8db105
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  flutter_electronicid: 2ad67f600815cdadbb8e402ed0c13f709c667c2e
-  VideoID: 893133cbd086bb9b9441b069ab55caa3d3c26640
+  flutter_electronicid: 72cd8f99447521a8d2c31bbf06bc94074f9d2fc9
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
+  OpenSSL-Universal: 1aa4f6a6ee7256b83db99ec1ccdaa80d10f9af9b
+  VideoIDLiteSDK: 964203fc675f64b0d456c49962be6fdc2bc439bc
 
 PODFILE CHECKSUM: 7368163408c647b7eb699d0d788ba6718e18fb8d
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

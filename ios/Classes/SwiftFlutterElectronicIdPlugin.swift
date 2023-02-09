@@ -1,6 +1,6 @@
 import Flutter
 import UIKit
-import VideoIDSDK
+import VideoIDLiteSDK
 
 public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin, VideoIDDelegate {
 
@@ -34,12 +34,12 @@ public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin, VideoIDDel
         let endpoint = config["endpoint"] as! String
         let language = config["language"] as! String
         let document = config["document"] as! Int?
-        let environment = VideoIDSDK.SDKEnvironment(url: endpoint, authorization: authorization)
+        let environment = VideoIDLiteSDK.SDKEnvironment(url: endpoint, authorization: authorization)
 
         let viewController = UIApplication.shared.keyWindow?.rootViewController
 
         DispatchQueue.main.async {
-          let view = VideoIDSDK.VideoIDSDKViewController(environment: environment,
+          let view = VideoIDLiteSDK.VideoIDSDKViewController(environment: environment,
             docType: document,
             language: language)
           view.modalPresentationStyle = UIModalPresentationStyle.fullScreen
