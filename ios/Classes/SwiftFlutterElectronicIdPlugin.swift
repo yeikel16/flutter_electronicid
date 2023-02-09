@@ -46,6 +46,16 @@ public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin, VideoIDDel
             view.delegate = self
             viewController?.present(view, animated: true, completion: nil)
         }
+    } else if call.method == "checkRequirements" {
+        let endpoint = arguments["endpoint"] as! String
+        VideoIDLiteSDK.CheckRequirements().check(url: endpoint, service: .videoID) {
+            (checkResult:CheckResult) in
+                DispatchQueue.main.async {
+                    self.result?(checkResult.passed)
+                }
+            }
+    } else {
+        self.result?(FlutterMethodNotImplemented)
     }
   }
 
