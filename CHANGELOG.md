@@ -1,3 +1,7 @@
+## 1.3.0
+
+- Update minSdkVersion to 21
+
 ## 1.2.0
 
 - Migrate from VideoIDSDK to VideoIDLiteSDK so the plugin can run in Xcode 14 which dropped bitcode support.
