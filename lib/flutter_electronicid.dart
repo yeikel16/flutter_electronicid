@@ -36,12 +36,14 @@ class VideoIDConfiguration {
     required this.authorization,
     required this.language,
     this.document,
+    this.defaultDocument,
   });
 
   final String endpoint;
   final String authorization;
   final String language;
-  final String? document;
+  final int? document;
+  final int? defaultDocument;
 
   Map<String, dynamic> toJson() {
     return {
@@ -49,6 +51,7 @@ class VideoIDConfiguration {
       "authorization": authorization,
       "language": language,
       "document": document ?? null,
+      "defaultDocument": defaultDocument ?? null,
     }..removeWhere((key, value) => value == null);
   }
 }

@@ -65,6 +65,8 @@ class _HomePageState extends State<HomePage> {
           authorization: authorization,
           language: 'en',
           endpoint: endpoint,
+          // German residence permit
+          defaultDocument: 251,
         ),
       );
       showSnackBar('Video ID OK: $videoId');
