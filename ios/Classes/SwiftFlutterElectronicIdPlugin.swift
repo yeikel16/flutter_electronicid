@@ -33,7 +33,7 @@ public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin, VideoIDDel
         let authorization = config["authorization"] as! String
         let endpoint = config["endpoint"] as! String
         let language = config["language"] as! String
-        let document = config["document"] as! Int?
+        let document = config["document"] as! NSNumber?
         let environment = VideoIDSDK.SDKEnvironment(url: endpoint, authorization: authorization)
 
         let viewController = UIApplication.shared.keyWindow?.rootViewController
