@@ -1,6 +1,6 @@
 import Flutter
 import UIKit
-import VideoIDLiteSDK
+import VideoIDSDK
 
 public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin, VideoIDDelegate {
 
@@ -34,12 +34,12 @@ public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin, VideoIDDel
         let endpoint = config["endpoint"] as! String
         let language = config["language"] as! String
         let document = config["document"] as! Int?
-        let environment = VideoIDLiteSDK.SDKEnvironment(url: endpoint, authorization: authorization)
+        let environment = VideoIDSDK.SDKEnvironment(url: endpoint, authorization: authorization)
 
         let viewController = UIApplication.shared.keyWindow?.rootViewController
 
         DispatchQueue.main.async {
-          let view = VideoIDLiteSDK.VideoIDSDKViewController(environment: environment,
+          let view = VideoIDSDK.VideoIDSDKViewController(environment: environment,
             docType: document,
             language: language)
           view.modalPresentationStyle = UIModalPresentationStyle.fullScreen
@@ -48,7 +48,7 @@ public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin, VideoIDDel
         }
     } else if call.method == "checkRequirements" {
         let endpoint = arguments["endpoint"] as! String
-        VideoIDLiteSDK.CheckRequirements().check(url: endpoint, service: .videoID) {
+        VideoIDSDK.CheckRequirements().check(url: endpoint, service: .videoID) {
             (checkResult:CheckResult) in
                 DispatchQueue.main.async {
                     self.result?(checkResult.passed)
