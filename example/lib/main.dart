@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_electronicid/flutter_electronicid.dart';
@@ -57,29 +59,17 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void openVideoId() async {
-    showSnackBar('Opening VideoID...');
+  void launchSdk<R>({
+    required String name,
+    required Future<R?> Function() action,
+  }) async {
     try {
-      final videoId = await FlutterElectronicId.openVideoID(
-        configuration: VideoIDConfiguration(
-          authorization: authorization,
-          language: 'en',
-          endpoint: endpoint,
-          // German residence permit
-          defaultDocument: 251,
-        ),
-      );
-      showSnackBar('Video ID OK: $videoId');
+      final resultId = await action.call();
+      showSnackBar('$name: $resultId');
     } catch (e) {
-      if (kDebugMode) print(e);
       showError(e.toString());
+      if (kDebugMode) log(e.toString());
     }
-  }
-
-  void checkRequirements() async {
-    showSnackBar('Checking VideoID Requirements...');
-    final success = await FlutterElectronicId.checkRequirements(endpoint);
-    showSnackBar('Video ID Requirements Passed: $success');
   }
 
   @override
@@ -92,12 +82,50 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             ElevatedButton(
-              onPressed: checkRequirements,
               child: const Text('Check VideoID Requirements'),
+              onPressed: () {
+                launchSdk(
+                  name: 'Check VideoID Requirements',
+                  action: () {
+                    showSnackBar('Start check VideoID requirements ...');
+                    return FlutterElectronicId.checkRequirements(
+                      endpoint,
+                    );
+                  },
+                );
+              },
             ),
             ElevatedButton(
-              onPressed: openVideoId,
               child: const Text('Open VideoID'),
+              onPressed: () {
+                launchSdk(
+                  name: 'Open VideoID',
+                  action: () => FlutterElectronicId.openVideoID(
+                    configuration: VideoIDConfiguration(
+                      authorization: authorization,
+                      language: 'en',
+                      endpoint: endpoint,
+                      defaultDocument: 251, // German residence permit
+                    ),
+                  ),
+                );
+              },
+            ),
+            ElevatedButton(
+              child: const Text('Open VideoID Medium'),
+              onPressed: () {
+                launchSdk(
+                  name: 'VideoID Medium',
+                  action: () => FlutterElectronicId.openVideoIdMedium(
+                    configuration: VideoIDConfiguration(
+                      authorization: authorization,
+                      language: 'en',
+                      endpoint: endpoint,
+                      defaultDocument: 251, // German residence permit
+                    ),
+                  ),
+                );
+              },
             ),
           ],
         ),
