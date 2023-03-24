@@ -8,24 +8,49 @@ class FlutterElectronicId {
   static const MethodChannel _channel =
       const MethodChannel('flutter_electronicid');
 
-  static Future<String?> openVideoID(
-      {VideoIDConfiguration? configuration,
-      Map<String, dynamic>? serialization}) async {
-    final result = await _channel.invokeMethod('openVideoID', {
-      'configuration': configuration?.toJson(),
-      'serialization': serialization == null
-          ? null
-          : Platform.isIOS
-              ? serialization
-              : jsonEncode(serialization)
-    });
+  static Future<String?> openVideoID({
+    VideoIDConfiguration? configuration,
+    Map<String, dynamic>? serialization,
+  }) async {
+    final result = await _channel.invokeMethod(
+      'openVideoID',
+      {
+        'configuration': configuration?.toJson(),
+        'serialization': serialization == null
+            ? null
+            : Platform.isIOS
+                ? serialization
+                : jsonEncode(serialization)
+      },
+    );
+    return result == null ? null : result;
+  }
+
+  static Future<String?> openVideoIdMedium({
+    VideoIDConfiguration? configuration,
+    Map<String, dynamic>? serialization,
+  }) async {
+    final result = await _channel.invokeMethod(
+      'openVideoIdMedium',
+      {
+        'configuration': configuration?.toJson(),
+        'serialization': serialization == null
+            ? null
+            : Platform.isIOS
+                ? serialization
+                : jsonEncode(serialization)
+      },
+    );
     return result == null ? null : result;
   }
 
   static Future<bool> checkRequirements(String endpoint) async {
-    final bool success = await _channel.invokeMethod('checkRequirements', {
-      'endpoint': endpoint,
-    });
+    final bool success = await _channel.invokeMethod(
+      'checkRequirements',
+      {
+        'endpoint': endpoint,
+      },
+    );
     return success;
   }
 }

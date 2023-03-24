@@ -10,6 +10,7 @@ import eu.electronicid.sdk.base.ui.base.VideoIdServiceActivity
 import eu.electronicid.sdk.discriminator.CheckRequirements
 import eu.electronicid.sdk.ExtraModulesProvider.Companion.loadEidKoinModules
 import eu.electronicid.sdk.ui.videoid.VideoIDActivity
+import eu.electronicid.sdk.ui.videoscan.VideoScanActivity
 
 import io.flutter.Log
 import io.flutter.embedding.android.FlutterFragmentActivity
@@ -124,6 +125,31 @@ class FlutterElectronicIdPlugin: FlutterPlugin, MethodCallHandler, ActivityAware
             putExtra(VideoIDActivity.LANGUAGE, language)
             if (document != null) putExtra(VideoIDActivity.ID_DOCUMENT, document)
             if (defaultDocument != null) putExtra(VideoIDActivity.ID_DEFAULT, defaultDocument)
+          })
+        }
+        "openVideoIdMedium" -> {
+          val config = call.argument<Map<*, *>>("configuration")
+          if (config == null) {
+            result.error("VideoIDMediumError", "Missing VideoIDMedium configuration", null)
+            return
+          }
+          val authorization = config["authorization"] as String
+          val endpoint = config["endpoint"] as String
+          val language = config["language"] as String
+          val document = config["document"] as Int?
+          val defaultDocument = config["defaultDocument"] as Int?
+
+          startVideoID?.launch(Intent(activity, VideoScanActivity::class.java).apply {
+            putExtra(
+              VideoScanActivity.ENVIRONMENT,
+              Environment(
+                URL(endpoint),
+                authorization
+              )
+            )
+            putExtra(VideoScanActivity.LANGUAGE, language)
+            if (document != null) putExtra(VideoScanActivity.ID_DOCUMENT, document)
+            if (defaultDocument != null) putExtra(VideoScanActivity.ID_DEFAULT, defaultDocument)
           })
         }
         "checkRequirements" -> {
