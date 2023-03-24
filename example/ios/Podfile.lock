@@ -1,7 +1,7 @@
 PODS:
   - eIDRTC (1.1.35)
   - Flutter (1.0.0)
-  - flutter_electronicid (1.4.0):
+  - flutter_electronicid (1.5.0):
     - Flutter
     - VideoIDSDK (= 1.2.0)
   - lottie-ios (4.0.0)
@@ -31,7 +31,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   eIDRTC: 17623826a2e06289a772d84c2187c71ee292b8f9
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  flutter_electronicid: 6882111df45517f63fc0f5dd4fe01450b56ee081
+  flutter_electronicid: 694b0b623048b6d68ea3b819f01737fcf4a477b7
   lottie-ios: 0b5919ae7673fd7a1c36122b7cb6a9050e9c9f58
   OpenSSL-Universal: 84efb8a29841f2764ac5403e0c4119a28b713346
   VideoIDSDK: c78add948b48167c4591b6a8df30297992f0e966

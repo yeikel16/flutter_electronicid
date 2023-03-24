@@ -1,3 +1,10 @@
+# CAHNGELOG
+
+## 1.5.0
+
+- Implement `openVideoIdMedium` method to open VideoID Medium in Android and iOS.
+- Improve example app to show how to use `openVideoIdMedium` method.
+
 ## 1.4.0
 
 - Fix iOS crashes and missing permission issues by switching to latest full VideoIDSDK v1.2.0
@@ -21,4 +28,4 @@ Fixes compilation issues with newer versions of Xcode that use Swift 5.7.
 
 ## 1.0.0
 
-- Initial release with basic support for running Video ID and checking Video ID requirements on Android and iOS. 
+- Initial release with basic support for running Video ID and checking Video ID requirements on Android and iOS.
