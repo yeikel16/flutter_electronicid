@@ -46,6 +46,24 @@ public class SwiftFlutterElectronicIdPlugin: NSObject, FlutterPlugin, VideoIDDel
             view.delegate = self
             viewController?.present(view, animated: true, completion: nil)
         }
+    } else if call.method == "openVideoIdMedium" {
+        let config = arguments["configuration"] as! Dictionary<String, Any>
+        let authorization = config["authorization"] as! String
+        let endpoint = config["endpoint"] as! String
+        let language = config["language"] as! String
+        let document = config["document"] as! NSNumber?
+        let environment = VideoIDSDK.SDKEnvironment(url: endpoint, authorization: authorization)
+
+        let viewController = UIApplication.shared.keyWindow?.rootViewController
+
+        DispatchQueue.main.async {
+          let view = VideoIDSDK.VideoScanSDKViewController(environment: environment,
+            docType: document,
+            language: language)
+          view.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            view.delegate = self
+            viewController?.present(view, animated: true, completion: nil)
+        }
     } else if call.method == "checkRequirements" {
         let endpoint = arguments["endpoint"] as! String
         VideoIDSDK.CheckRequirements().check(url: endpoint, service: .videoID) {
