@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_electronicid'
-  s.version          = '1.2.0'
+  s.version          = '1.4.0'
   s.summary          = 'A Flutter Plugin that integrates the Native Android and iOS SDKs of Electronic ID, an Identity Verification Provider.'
   s.description      = <<-DESC
 A new flutter plugin project.
@@ -15,9 +15,9 @@ A new flutter plugin project.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.platform = :ios, '11.0'
-  s.dependency 'VideoIDLiteSDK', '1.0.17'
-  s.ios.deployment_target = '11.0'
+  s.platform = :ios, '12.0'
+  s.dependency 'VideoIDSDK', '1.2.0'
+  s.ios.deployment_target = '12.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
